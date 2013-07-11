@@ -4,9 +4,10 @@ var app = express.createServer(express.logger());
 
 app.get('/', function(request, response) {
 var content="Hello World 2!";
-fs.readFile('./index.html',function(err,data)){
+fs.readFileSync('./index.html',function(err,data){
+  if (err) throw err;
   content=data;
-}
+});
 response.send(content);
 //  response.send('Hello World! 2');
 });
